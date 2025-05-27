@@ -62,3 +62,12 @@ CREATE TABLE IF NOT EXISTS purchases (
   course_id INTEGER REFERENCES courses(id) ON DELETE CASCADE,
   purchased_at TIMESTAMP DEFAULT NOW()
 );
+
+-- Sessions
+CREATE TABLE IF NOT EXISTS sessions (
+  id SERIAL PRIMARY KEY,
+  session_token TEXT UNIQUE NOT NULL,
+  instructor_id INTEGER REFERENCES instructors(id) ON DELETE CASCADE,
+  expires_at TIMESTAMP NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW()
+);

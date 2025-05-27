@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true, // Next.js projects often have this as true
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler", // or "node"
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"],
+      "@/app/*": ["./app/*"],
+      "@/lib/*": ["./lib/*"]
+      // Define other aliases if you have them
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts", // Include Next.js type definitions
+    "tests/**/*.ts" // Make sure test files are included for type checking
+  ],
+  "exclude": ["node_modules"]
+}

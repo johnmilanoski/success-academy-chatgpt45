@@ -3,9 +3,11 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from '../../contexts/AuthContext'; // Adjusted path
 
 export default function LoginPage() {
   const router = useRouter();
+  const { refreshUser } = useAuth(); // Get refreshUser from context
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,7 +32,8 @@ export default function LoginPage() {
     if (!res.ok) {
       setError(data.error || "Login failed");
     } else {
-      // On success, redirect to the instructor dashboard (or homepage)
+      // On success, refresh user state and redirect
+      await refreshUser(); 
       router.push("/dashboard");
     }
   };
