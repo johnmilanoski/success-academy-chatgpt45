@@ -1,6 +1,6 @@
 'use client'; // Required for AuthProvider and useAuth hook
 
-import type { Metadata } from "next"; // Keep for static metadata if needed elsewhere
+//import type { Metadata } from "next"; // Keep for static metadata if needed elsewhere
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider, useAuth } from '../contexts/AuthContext'; // Adjusted path
