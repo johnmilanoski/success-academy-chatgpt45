@@ -5,7 +5,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider, useAuth } from '../contexts/AuthContext'; // Adjusted path
 import Link from 'next/link';
-import { useRouter } from "next/navigation"; // For programmatic navigation
+//import { useRouter } from "next/navigation"; // For programmatic navigation
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
