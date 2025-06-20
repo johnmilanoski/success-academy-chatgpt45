@@ -1,3 +1,5 @@
+export const runtime = 'nodejs';
+
 // app/middleware.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { Pool } from 'pg';
