@@ -44,31 +44,31 @@ export default function LoginPage() {
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded shadow-md w-full max-w-md"
       >
-        <h1 className="text-2xl font-bold mb-6 text-center">Log In</h1>
+        <h1 className="text-2xl font-bold mb-6 text-center text-gray-800">Log In</h1>
 
         {error && (
           <p className="mb-4 text-red-600 text-center">{error}</p>
         )}
 
-        <label className="block mb-2">
+        <label className="block mb-2 text-gray-700">
           Email
           <input
             type="email"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full mt-1 p-2 border rounded"
+            className="w-full mt-1 p-2 border rounded text-gray-900"
           />
         </label>
 
-        <label className="block mb-4">
+        <label className="block mb-4 text-gray-700">
           Password
           <input
             type="password"
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full mt-1 p-2 border rounded"
+            className="w-full mt-1 p-2 border rounded text-gray-900"
           />
         </label>
 
@@ -80,7 +80,7 @@ export default function LoginPage() {
           {loading ? "Logging in…" : "Log In"}
         </button>
 
-        <p className="mt-4 text-center text-sm">
+        <p className="mt-4 text-center text-sm text-gray-700">
           Don’t have an account?{" "}
           <span
             className="text-blue-600 cursor-pointer"
