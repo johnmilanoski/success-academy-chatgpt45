@@ -10,6 +10,7 @@ export default function SignupPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // Added state for password visibility
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -72,12 +73,21 @@ export default function SignupPage() {
         <label className="block mb-4 text-gray-700">
           Password
           <input
-            type="password"
+            type={showPassword ? 'text' : 'password'} // Dynamic type
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="w-full mt-1 p-2 border rounded text-gray-900"
           />
+          <div className="mt-2">
+            <input
+              type="checkbox"
+              checked={showPassword}
+              onChange={() => setShowPassword(!showPassword)}
+              className="mr-1"
+            />
+            <span className="text-sm text-gray-600">Show password</span>
+          </div>
         </label>
 
         <button
