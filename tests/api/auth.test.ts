@@ -68,14 +68,14 @@ describe('Auth API Routes', () => {
       expect(response.body).toHaveProperty('error');
       // Add more specific error message check if your API provides it
     });
-    
+
     it('should fail to signup with missing email', async () => {
         const { email, ...userWithoutEmail } = testUser;
         const response = await request(APP_URL)
           .post('/api/auth/signup')
           .send(userWithoutEmail)
-          .expect(400); 
-  
+          .expect(400);
+
         expect(response.body).toHaveProperty('error');
       });
 
@@ -85,7 +85,7 @@ describe('Auth API Routes', () => {
           .post('/api/auth/signup')
           .send({ ...userWithoutPassword, email: `new-${Date.now()}@example.com` })
           .expect(400);
-  
+
         expect(response.body).toHaveProperty('error');
       });
   });
@@ -103,10 +103,10 @@ describe('Auth API Routes', () => {
         .expect(200);
 
       expect(response.body).toHaveProperty('success', true);
-      
+
       const cookieHeader = response.headers['set-cookie'];
       expect(cookieHeader).toBeDefined();
-      
+
       const sessionCookie = cookieHeader.find((cookie: string) => cookie.startsWith('session_token='));
       expect(sessionCookie).toBeDefined();
       expect(sessionCookie).toMatch(/HttpOnly/i);
@@ -154,7 +154,7 @@ describe('Auth API Routes', () => {
         const response = await request(APP_URL)
             .get('/api/auth/me')
             .expect(200); // Or 401 if middleware blocks unauthenticated requests to /api/auth/me
-        
+
         expect(response.body).toEqual({ user: null });
     });
 
@@ -199,7 +199,7 @@ describe('Auth API Routes', () => {
         }
         expect(createdSessionToken).toBeTruthy();
     });
-    
+
     it('should logout the user and clear the session_token cookie', async () => {
         const response = await request(APP_URL)
             .post('/api/auth/logout')

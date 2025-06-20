@@ -57,7 +57,7 @@ export async function middleware(req: NextRequest) {
         loginUrl.searchParams.set('next', pathname);
         response = NextResponse.redirect(loginUrl);
       }
-      
+
       // Clear the invalid cookie
       response.cookies.set('session_token', '', { path: '/', expires: new Date(0) });
       return response;
@@ -85,7 +85,7 @@ export async function middleware(req: NextRequest) {
         expires: newExpiry,
         secure: process.env.NODE_ENV === 'production',
     });
-    
+
     return response;
 
   } catch (error) {

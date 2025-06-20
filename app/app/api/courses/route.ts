@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
     const modulesRaw = formData.get("modules") as string;
 
     const modules = JSON.parse(modulesRaw);
-    
+
     const instructorIdHeader = req.headers.get('X-Instructor-Id');
     if (!instructorIdHeader) {
       return NextResponse.json({ error: 'Unauthorized: Missing instructor ID' }, { status: 401 });

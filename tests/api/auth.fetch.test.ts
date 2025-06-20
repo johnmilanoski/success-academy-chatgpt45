@@ -56,7 +56,7 @@ async function testSignUpAndLogin() {
     const loginData = await loginResponse.json();
     assert.strictEqual(loginResponse.status, 200, `Login failed: ${loginResponse.status} ${JSON.stringify(loginData)}`);
     assert.strictEqual(loginData.success, true, 'Login response success was not true');
-    
+
     const setCookieHeader = loginResponse.headers.get('set-cookie');
     assert.ok(setCookieHeader, 'Set-Cookie header not found');
     const match = setCookieHeader.match(/session_token=([^;]+)/);

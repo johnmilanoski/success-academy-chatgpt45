@@ -10,13 +10,13 @@ module.exports = {
     // Add other aliases as needed
   },
   testPathIgnorePatterns: [
-    "<rootDir>/.next/", 
+    "<rootDir>/.next/",
     "<rootDir>/node_modules/"
   ],
   // transform can usually be omitted when using ts-jest preset
   // transform: {
   //   '^.+\\.(ts|tsx)$': ['ts-jest', {
-  //     tsconfig: 'tsconfig.json', 
+  //     tsconfig: 'tsconfig.json',
   //   }],
   // },
   clearMocks: true,

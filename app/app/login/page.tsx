@@ -33,7 +33,7 @@ export default function LoginPage() {
       setError(data.error || "Login failed");
     } else {
       // On success, refresh user state and redirect
-      await refreshUser(); 
+      await refreshUser();
       router.push("/dashboard");
     }
   };
