@@ -18,7 +18,16 @@ export async function POST(req: NextRequest) {
     const modulesRaw = formData.get("modules") as string;
 
     const modules = JSON.parse(modulesRaw);
-    const instructorId = 1; // Replace with real auth later
+
+    const instructorIdHeader = req.headers.get('X-Instructor-Id');
+    if (!instructorIdHeader) {
+      return NextResponse.json({ error: 'Unauthorized: Missing instructor ID' }, { status: 401 });
+    }
+
+    const instructorId = parseInt(instructorIdHeader, 10);
+    if (isNaN(instructorId)) {
+      return NextResponse.json({ error: 'Unauthorized: Invalid instructor ID format' }, { status: 401 });
+    }
 
     const client = await pool.connect();
     try {
