@@ -10,7 +10,8 @@ export default function SignupPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // Added state for password visibility
+  const [confirmPassword, setConfirmPassword] = useState(""); // State for confirm password
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -18,6 +19,12 @@ export default function SignupPage() {
     e.preventDefault();
     setLoading(true);
     setError(null);
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      setLoading(false);
+      return;
+    }
 
     const res = await fetch("/api/auth/signup", {
       method: "POST",
@@ -79,16 +86,29 @@ export default function SignupPage() {
             onChange={(e) => setPassword(e.target.value)}
             className="w-full mt-1 p-2 border rounded text-gray-900"
           />
-          <div className="mt-2">
+        </label>
+
+        <label className="block mb-4 text-gray-700">
+          Confirm Password
+          <input
+            type={showPassword ? 'text' : 'password'} // Apply show/hide to this field as well
+            required
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            className="w-full mt-1 p-2 border rounded text-gray-900"
+          />
+        </label>
+
+        {/* Unified Show/Hide Password Toggle - Placed after both password fields */}
+        <div className="mb-4">
             <input
               type="checkbox"
               checked={showPassword}
               onChange={() => setShowPassword(!showPassword)}
               className="mr-1"
             />
-            <span className="text-sm text-gray-600">Show password</span>
-          </div>
-        </label>
+            <span className="text-sm text-gray-600">Show passwords</span>
+        </div>
 
         <button
           type="submit"
