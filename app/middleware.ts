@@ -118,7 +118,7 @@ export const config = {
      * - / (homepage, assuming it's public)
      * - /api/student/catalog (public catalog API)
      */
-    '/((?!_next/static|_next/image|favicon.ico|login|signup|api/auth|api/student/catalog|$).*)',
+    '/((?!_next/static|_next/image|favicon.ico|login|signup|api/auth/login|api/auth/logout|api/student/catalog|$).*)',
     // Explicitly include specific protected routes that might be missed by the general pattern
     // or to ensure they are covered even if public by default.
     '/api/instructor/:path*',
