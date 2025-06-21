@@ -16,6 +16,7 @@ const protectedApiPaths = [
 ];
 
 const protectedPagePaths = [
+  '/', // Added the root path
   '/instructor',
   '/create-course',
   '/dashboard',
