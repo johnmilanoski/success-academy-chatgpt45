@@ -24,8 +24,14 @@ const protectedPagePaths = [
 
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
-  const sessionToken = req.cookies.get('session_token')?.value;
 
+  if (pathname === '/') {
+    // Ensure this new URL is correctly formed for redirection
+    const diagnosticRedirectUrl = new URL('/login_test_debug', req.url);
+    return NextResponse.redirect(diagnosticRedirectUrl);
+  }
+
+  const sessionToken = req.cookies.get('session_token')?.value;
   const isProtectedApiPath = protectedApiPaths.some(path => pathname.startsWith(path));
   const isProtectedPagePath = protectedPagePaths.some(path => pathname.startsWith(path));
 
