@@ -111,16 +111,14 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    '/', // Explicitly match the root path
-    // This regex handles other paths, ensuring they are not the explicitly excluded ones.
-    // The `.+` ensures it matches paths with at least one character after the initial implicit slash.
-    '/((?!_next/static|_next/image|favicon.ico|login|signup|api/auth/login|api/auth/logout|api/student/catalog).+)',
-    // Keep the specific includes as they ensure these patterns are definitely covered.
+    '/', // The root instructor dashboard
+    '/dashboard/:path*', // The other dashboard route (e.g., /dashboard/settings)
+    '/instructor/:path*', // Matches /instructor and /instructor/courses, etc.
+    '/create-course', // Specific page, assuming no sub-paths that also need matching here
+    // API routes that need session validation and potentially the X-Instructor-Id header
+    '/api/auth/me',
     '/api/instructor/:path*',
-    '/api/courses/:path*',
+    '/api/courses/:path*', // Matches /api/courses and /api/courses/some-id/etc
     '/api/upload/:path*',
-    '/instructor/:path*',
-    '/create-course/:path*',
-    '/dashboard/:path*',
   ],
 };
