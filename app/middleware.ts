@@ -23,11 +23,11 @@ const protectedPagePaths = [
 ];
 
 export async function middleware(req: NextRequest) {
-  const { pathname } = req.nextUrl;
+  const { pathname } = req.nextUrl; // Define pathname once
+  console.log(`[V2 DIAG] Middleware running for path: ${pathname}`); // Use defined pathname
 
-  if (pathname === '/') {
-    // Ensure this new URL is correctly formed for redirection
-    const diagnosticRedirectUrl = new URL('/login_test_debug', req.url);
+  if (pathname === '/') { // Use defined pathname
+    const diagnosticRedirectUrl = new URL('/login_test_diag_v2', req.url);
     return NextResponse.redirect(diagnosticRedirectUrl);
   }
 
@@ -115,25 +115,6 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - /login (login page)
-     * - /signup (signup page)
-     * - /api/auth (auth routes like login, signup, logout)
-     * - / (homepage, assuming it's public)
-     * - /api/student/catalog (public catalog API)
-     */
-    '/((?!_next/static|_next/image|favicon.ico|login|signup|api/auth/login|api/auth/logout|api/student/catalog|$).*)',
-    // Explicitly include specific protected routes that might be missed by the general pattern
-    // or to ensure they are covered even if public by default.
-    '/api/instructor/:path*',
-    '/api/courses/:path*', // This will protect POST to /api/courses for creation
-    '/api/upload/:path*',
-    '/instructor/:path*',
-    '/create-course/:path*',
-    '/dashboard/:path*',
+    '/((?!_next/static|_next/image|favicon.ico).*)', // Simplified matcher
   ],
 };
