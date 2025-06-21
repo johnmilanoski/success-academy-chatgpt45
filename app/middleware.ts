@@ -12,6 +12,7 @@ const protectedApiPaths = [
   '/api/instructor',
   '/api/courses', // Assuming all /api/courses/* need auth for now
   '/api/upload',
+  '/api/auth/me', // Added /api/auth/me
 ];
 
 const protectedPagePaths = [
