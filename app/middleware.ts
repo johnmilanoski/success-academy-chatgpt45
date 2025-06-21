@@ -24,12 +24,8 @@ const protectedPagePaths = [
 
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl; // Define pathname once
-  console.log(`[V2 DIAG] Middleware running for path: ${pathname}`); // Use defined pathname
-
-  if (pathname === '/') { // Use defined pathname
-    const diagnosticRedirectUrl = new URL('/login_test_diag_v2', req.url);
-    return NextResponse.redirect(diagnosticRedirectUrl);
-  }
+  // Removed: console.log(`[V2 DIAG] Middleware running for path: ${pathname}`);
+  // Removed: diagnostic redirect block for /login_test_diag_v2
 
   const sessionToken = req.cookies.get('session_token')?.value;
   const isProtectedApiPath = protectedApiPaths.some(path => pathname.startsWith(path));
@@ -115,6 +111,16 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!_next/static|_next/image|favicon.ico).*)', // Simplified matcher
+    '/', // Explicitly match the root path
+    // This regex handles other paths, ensuring they are not the explicitly excluded ones.
+    // The `.+` ensures it matches paths with at least one character after the initial implicit slash.
+    '/((?!_next/static|_next/image|favicon.ico|login|signup|api/auth/login|api/auth/logout|api/student/catalog).+)',
+    // Keep the specific includes as they ensure these patterns are definitely covered.
+    '/api/instructor/:path*',
+    '/api/courses/:path*',
+    '/api/upload/:path*',
+    '/instructor/:path*',
+    '/create-course/:path*',
+    '/dashboard/:path*',
   ],
 };
