@@ -30,7 +30,7 @@ export default function DashboardPage() {
       <div className="text-center p-8">
         <h1 className="text-2xl font-bold text-orange-600 mb-4">DEBUG: State is USER_NAME_EMPTY_STRING</h1>
         <p className="text-gray-700">User name is present but is an empty string.</p>
-        <p className="text-gray-700 mb-4">Debug info: user.name is type '{userNameType}', value: '[{userName}]'</p>
+        <p className="text-gray-700 mb-4">Debug info: user.name is type &apos;{userNameType}&apos;, value: &apos;[{userName}]&apos;</p>
         <p className="mt-4">
           <Link href="/instructor/courses" className="text-blue-600 hover:underline">View My Courses</Link>
         </p>
@@ -43,7 +43,7 @@ export default function DashboardPage() {
       <div className="text-center p-8">
         <h1 className="text-2xl font-bold text-yellow-500 mb-4">DEBUG: State is USER_NAME_WHITESPACE</h1>
         <p className="text-gray-700">User name is present but consists only of whitespace.</p>
-        <p className="text-gray-700 mb-4">Debug info: user.name is type '{userNameType}', value: '[{userName}]'</p>
+        <p className="text-gray-700 mb-4">Debug info: user.name is type &apos;{userNameType}&apos;, value: &apos;[{userName}]&apos;</p>
         <p className="mt-4">
           <Link href="/instructor/courses" className="text-blue-600 hover:underline">View My Courses</Link>
         </p>
@@ -56,7 +56,7 @@ export default function DashboardPage() {
     <div className="p-6">
       <h1 className="text-3xl font-bold text-gray-800 mb-4">DEBUG: State is USER_NAME_PRESENT (Dashboard)</h1>
       <p className="text-lg text-gray-700 mb-6">Welcome to your dashboard, {userName}!</p>
-      <p className="text-gray-700 mb-4">Debug info: user.name is type '{userNameType}', value: '[{userName}]'</p>
+      <p className="text-gray-700 mb-4">Debug info: user.name is type &apos;{userNameType}&apos;, value: &apos;[{userName}]&apos;</p>
       <p>
         <Link href="/instructor/courses" className="text-blue-600 hover:underline text-lg">View My Courses</Link>
       </p>
