@@ -66,4 +66,5 @@ docker-compose.yml.override
 .npmrc
 
 # Uploads folder (if you don't want to track uploaded media)
-uploads/
+uploads/*
+!uploads/.gitkeep
