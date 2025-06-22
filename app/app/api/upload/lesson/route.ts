@@ -11,7 +11,13 @@ export async function POST(req: NextRequest) {
 
   const buffer = Buffer.from(await file.arrayBuffer());
   const filename = `${Date.now()}-${file.name}`;
-  const filepath = path.join(process.cwd(), "public", "Uploads", filename);
+
+  const uploadsDir = path.join(process.cwd(), "public", "uploads");
+  if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+  }
+
+  const filepath = path.join(uploadsDir, filename);
   fs.writeFileSync(filepath, buffer);
 
   return NextResponse.json({ success: true, filename });
