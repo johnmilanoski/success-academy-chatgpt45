@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = "force-dynamic";
 
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
@@ -33,7 +34,6 @@ export default function PurchasePage() {
         setSuccess(true);
       }
     } catch {
-      // no `err` here — ESLint is happy
       setError("Purchase failed");
     } finally {
       setLoading(false);
