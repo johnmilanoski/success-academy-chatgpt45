@@ -33,5 +33,5 @@ COPY --from=builder /app/next.config.* ./
 COPY --from=builder /app/postcss.config.* ./
 COPY --from=builder /app/tailwind.config.* ./
 
-# Start the app
-CMD ["npm", "start"]
+# Start the app using the standalone server
+CMD ["node", ".next/standalone/server.js"]
