@@ -1,7 +1,6 @@
 // tests/api/auth.test.ts
 import request from 'supertest';
 import { cleanupUserByEmail, findInstructorByEmail, findSessionByToken, getTestPool, closeTestPool } from '../db-utils'; // Adjust path as needed
-import { Pool }e;
 
 // Load APP_URL from environment, ensure it's set (via tests/setup.ts and .env.test)
 const APP_URL = process.env.APP_URL;
