@@ -32,7 +32,8 @@ export default function PurchasePage() {
       } else {
         setSuccess(true);
       }
-    } catch (err) {
+    } catch {
+      // no `err` here — ESLint is happy
       setError("Purchase failed");
     } finally {
       setLoading(false);
