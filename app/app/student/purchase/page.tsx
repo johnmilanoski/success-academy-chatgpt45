@@ -1,10 +1,18 @@
 "use client";
+import { Suspense, useState } from "react";
+import { useSearchParams } from "next/navigation";
+
 export const dynamic = "force-dynamic";
 
-import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+export default function PurchasePageWrapper() {
+  return (
+    <Suspense fallback={<div>Loading purchase form…</div>}>
+      <PurchasePage />
+    </Suspense>
+  );
+}
 
-export default function PurchasePage() {
+function PurchasePage() {
   const searchParams = useSearchParams();
   const courseId = Number(searchParams.get("courseId"));
 
@@ -22,17 +30,11 @@ export default function PurchasePage() {
       const res = await fetch("/api/student/purchase", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          studentId: Number(studentId),
-          courseId,
-        }),
+        body: JSON.stringify({ studentId: Number(studentId), courseId }),
       });
       const data = await res.json();
-      if (!res.ok) {
-        setError(data.error || "Purchase failed");
-      } else {
-        setSuccess(true);
-      }
+      if (!res.ok) setError(data.error || "Purchase failed");
+      else setSuccess(true);
     } catch {
       setError("Purchase failed");
     } finally {
