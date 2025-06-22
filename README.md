@@ -1,12 +1,3 @@
-**Giving README guidance**
-
-The user is asking if they should copy all the text
-
-Thought for a few seconds
-
-Yes—just create (or overwrite) a file named **README.md** in your project root and paste the entire block below in one go. It’s complete and ready to use:
-
-```markdown
 # Success Academy Platform
 
 ## Project Overview
@@ -132,6 +123,3 @@ Students can:
 | Method | Route                        | FormData fields per lesson | Description                |
 | ------ | ---------------------------- | -------------------------- | -------------------------- |
 | POST   | `/api/upload/lesson`         | `lessonFiles-<mi>-<li>`    | Save lesson media to `/uploads` |
-```
-
-Save that as **README.md**, commit, and push—and anyone browsing your repo will immediately see all the project details in one place.
