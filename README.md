@@ -63,6 +63,7 @@ Students can:
    ```bash
    git clone https://github.com/johnmilanoski/success-academy-chatgpt45.git
    cd success-academy-chatgpt45
+   cp .env.example .env
    ```
 
 3. **Build & run services**  
