@@ -7,6 +7,17 @@ const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
 export async function POST(req: NextRequest) {
   const { name, email, password } = await req.json();
+
+  if (!name || name.trim() === "") {
+    return NextResponse.json({ error: "Missing name" }, { status: 400 });
+  }
+  if (!email || email.trim() === "") {
+    return NextResponse.json({ error: "Missing email" }, { status: 400 });
+  }
+  if (!password || password.trim() === "") {
+    return NextResponse.json({ error: "Missing password" }, { status: 400 });
+  }
+
   const hash = await bcrypt.hash(password, 10);
 
   try {
