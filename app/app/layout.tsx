@@ -1,21 +1,11 @@
 'use client'; // Required for AuthProvider and useAuth hook
 
 // import type { Metadata } from "next"; // Keep for static metadata if needed elsewhere
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { AuthProvider, useAuth } from '../contexts/AuthContext'; // Adjusted path
+import { AuthProvider, useAuth } from '../contexts/AuthContext';
 import Link from 'next/link';
 // import { useRouter } from "next/navigation"; // For programmatic navigation
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 // Note: 'metadata' export is for Server Components.
 // For client components, you'd manage title/meta tags differently if needed dynamically.
@@ -35,9 +25,7 @@ function AuthAwareLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="antialiased">
         <header className="p-4 bg-gray-800 text-white">
           <nav className="container mx-auto flex justify-between items-center">
             <Link href="/" className="text-xl font-bold">Success Academy</Link>
